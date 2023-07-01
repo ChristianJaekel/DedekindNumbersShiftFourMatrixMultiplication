@@ -1,0 +1,17 @@
+# Compiled object files
+CPU/build/
+GPU/build/
+*.o
+
+# Executable
+CPU/dedekind
+GPU/dedekind
+
+# Eigen
+CPU/eigen/
+
+# IDE files
+.vscode/
+
+# Ignore .git folder
+.git/
