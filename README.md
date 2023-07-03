@@ -35,7 +35,7 @@ Intel Core i7-10850H: 1.92s
 Timings to compute the 8th Dedekind number with different CPUs with 1 thread.  
 
 Intel Core i5-2430M: 23.9s  
-Intel Core i7-7920HQ: 7.8s  (@4.1GHz) 
+Intel Core i7-7920HQ: 7.8s  (@4.1GHz)  
 Intel Core i7-10850H: 11.46s (@2.7GHz)  
 
 The benefits of the GPU implementation can only be experienced for the computation of the 9th Dedekind number, since the involved matrices are much larger and numerous. For this computation, approximately 20 GB of precomputed data is required.
