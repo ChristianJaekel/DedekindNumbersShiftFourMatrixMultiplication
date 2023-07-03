@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <functional>
 
 const std::array<uint64_t, 65> bitMasks = {
     0b0000000000000000000000000000000000000000000000000000000000000000,

@@ -1,10 +1,11 @@
-# Compiled object files
+# build files
 CPU/build/
 GPU/build/
+build/
 *.o
+CPU/src/DataDir.h
 
-# Executable
-CPU/dedekind
+# executable
 GPU/dedekind
 
 # Eigen
@@ -13,5 +14,9 @@ CPU/eigen/
 # IDE files
 .vscode/
 
-# Ignore .git folder
+# ignore .git folder
 .git/
+
+# ignore cmake cache
+.cache
+CPU/.cache

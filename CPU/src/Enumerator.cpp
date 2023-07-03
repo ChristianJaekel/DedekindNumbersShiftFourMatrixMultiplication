@@ -1,5 +1,6 @@
 #include "Enumerator.hpp"
 
+#include "DataDir.h"
 #include <FDL.hpp>
 #include <Timer.hpp>
 #include <fstream>
@@ -7,7 +8,7 @@
 #include <tbb/combinable.h>
 #include <tbb/parallel_for.h>
 
-#include EIGEN_DIR
+#include <Eigen/Dense>
 
 using namespace Eigen;
 
@@ -15,6 +16,8 @@ using MatU128T = Matrix<uint128T, Dynamic, Dynamic>;
 using MatDT    = Matrix<double, Dynamic, Dynamic>;
 
 Enumerator::Enumerator(unsigned int n) {
+    n = n - 4;
+
     mNumOfGens = n;
 
     FreeDistLat fdln(n);
@@ -29,10 +32,13 @@ Enumerator::Enumerator(unsigned int n) {
 }
 
 IntervalT Enumerator::readIntervals(const std::string& fileName) const {
-    IntervalT intervals;
+    IntervalT intervals{};
 
     std::ifstream t(fileName.c_str());
-    std::string   line;
+    if (t.fail())
+        throw std::runtime_error("intervals file not found");
+
+    std::string line{};
 
     while (getline(t, line)) {
         intervals.push_back({});
@@ -46,10 +52,14 @@ IntervalT Enumerator::readIntervals(const std::string& fileName) const {
 }
 
 IntervalT Enumerator::readABValues(const std::string& fileName) const {
-    IntervalT intervals;
+    IntervalT intervals{};
 
     std::ifstream t(fileName.c_str());
-    std::string   line;
+
+    if (t.fail())
+        throw std::runtime_error("abValues file not found");
+
+    std::string line{};
 
     uint64_t front = 0;
     uint64_t back  = 0;

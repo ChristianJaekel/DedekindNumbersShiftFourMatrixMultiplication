@@ -8,6 +8,8 @@
 #include <tbb/parallel_for.h>
 
 Enumerator::Enumerator(unsigned int n) {
+    n = n - 4;
+
     mNumOfGens = n;
 
     FreeDistLat fdln(n);
@@ -24,10 +26,13 @@ Enumerator::Enumerator(unsigned int n) {
 }
 
 IntervalT Enumerator::readIntervals(const std::string& fileName) const {
-    IntervalT intervals;
+    IntervalT intervals{};
 
     std::ifstream t(fileName.c_str());
-    std::string   line;
+    if (t.fail())
+        throw std::runtime_error("intervals file not found");
+
+    std::string line{};
 
     while (getline(t, line)) {
         intervals.push_back({});
@@ -41,10 +46,14 @@ IntervalT Enumerator::readIntervals(const std::string& fileName) const {
 }
 
 IntervalT Enumerator::readABValues(const std::string& fileName) const {
-    IntervalT intervals;
+    IntervalT intervals{};
 
     std::ifstream t(fileName.c_str());
-    std::string   line;
+
+    if (t.fail())
+        throw std::runtime_error("abValues file not found");
+
+    std::string line{};
 
     uint64_t front = 0;
     uint64_t back  = 0;

@@ -15,10 +15,10 @@ int main(int argc, char* argv[]) {
     }
 
     // enumeration of FDL(6), FDL(7) and FDL(8)
-    for (unsigned i : {2, 3, 4}) {
+    for (unsigned i : {6, 7, 8}) {
         Enumerator e(i);
 
-        Timer t("FDL(" + std::to_string(i + 4) + ")");
+        Timer t("FDL(" + std::to_string(i) + ")");
 
         const auto nrOfElements = e.doEnumerationGPU(verbose);
         t.stop();
