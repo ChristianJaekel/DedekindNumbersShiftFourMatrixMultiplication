@@ -41,3 +41,5 @@ Intel Core i7-10850H: 11.46s (@2.7GHz)
 The benefits of the GPU implementation can only be experienced for the computation of the 9th Dedekind number, since the involved matrices are much larger and numerous. For this computation, approximately 20 GB of precomputed data is required.
 
 On some systems, compilation issues with clang++ occurred. Installing "libstdc++-12-dev" solved the problem.
+
+The computation of d(9) is split into 9919 independent parts. Folder D9PartialSums contains all partial values, together with a python script to sum them up.
